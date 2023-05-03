@@ -74,8 +74,10 @@ const handleSubmit = async (e) => {
 
   loader(messageDiv);
 
+  console.log('data: ', data.get('prompt'));
+
   // fetch data from server -> bot's response
-  const response = await fetch("http://localhost:5000", {
+  const response = await fetch("https://openai-codex-psi.vercel.app/", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -85,6 +87,7 @@ const handleSubmit = async (e) => {
     }),
   });
 
+  console.log('response: ', response)
   clearInterval(loadInterval);
   messageDiv.innerHTML = '';
 
